@@ -5,6 +5,7 @@
 @theme {
   --color-primary: #121212;
   --color-secondary: #171717;
+  --color-tertiary: #1E1E1E;
 }
 
 body {

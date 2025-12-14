@@ -1,9 +1,15 @@
 import { Outlet } from "react-router-dom";
 
+import Navbar from "../components/Navbar";
+
 export default function DefaultLayout() {
   return (
-    <div>
-      <Outlet />
+    <div className="bg-secondary min-h-dvh flex flex-col items-center">
+      <Navbar />
+
+      <div className="w-6xl mt-8">
+        <Outlet />
+      </div>
     </div>
   );
 }

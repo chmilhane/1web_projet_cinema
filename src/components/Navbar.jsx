@@ -1,4 +1,21 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function Navbar() {
+  const queryUrl = new URLSearchParams(window.location.search).get("q") || "";
+  const [query, setQuery] = useState(queryUrl);
+
+  const navigate = useNavigate();
+
+  const onSearch = () => {
+    if (query.trim() === "") {
+      navigate("/");
+      return;
+    };
+
+    navigate(`/search?q=${query}`);
+  }
+
   return (
     <div className="flex flex-col w-full items-center bg-primary shadow-md">
       <div className="h-18 flex items-center justify-between w-full px-8 max-w-7xl">
@@ -23,9 +40,13 @@ export default function Navbar() {
                 rounded-l-sm
                 focus:outline-none
               "
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => { if (e.key === 'Enter') onSearch(); }}
             />
 
             <button
+              onClick={onSearch}
               className="
                 bg-blue-600 hover:bg-blue-700
                 cursor-pointer

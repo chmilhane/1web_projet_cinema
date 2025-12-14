@@ -7,7 +7,7 @@ export default function DefaultLayout() {
     <div className="bg-secondary min-h-dvh flex flex-col items-center">
       <Navbar />
 
-      <div className="px-8 w-full max-w-7xl mt-8">
+      <div className="px-8 w-full max-w-7xl mt-8 mb-8">
         <Outlet />
       </div>
     </div>

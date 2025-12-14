@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 export default function MovieCard({ movie }) {
   return (
     <Link to={`/movie/${movie.imdbID}`}>
-      <article className="bg-tertiary rounded-sm ring-1 ring-white/15 overflow-hidden">
+      <article className="bg-tertiary w-50 rounded-sm ring-1 ring-white/15 overflow-hidden">
         <img
           src={movie.Poster !== "N/A" ? movie.Poster : "/placeholder.png"}
           alt={`Affiche du film ${movie.Title}`}
-          className="w-full h-72 object-cover"
+          className="h-80 w-50 object-cover"
         />
         <div className="p-4 flex flex-col gap-1">
           <div className="flex items-center gap-1">

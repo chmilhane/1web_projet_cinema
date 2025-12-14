@@ -5,14 +5,16 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchTrendingMovies() {
       const movies = await getTrendingMovies();
-      console.log(movies);
-      
+
       setTrendingMovies(movies);
+      setLoading(false);
     }
+
     fetchTrendingMovies();
   }, []);
 
@@ -27,6 +29,10 @@ export default function Home() {
         {trendingMovies.map(movie => (
           <MovieCard key={movie.imdbID} movie={movie} />
         ))}
+
+        {loading && (
+          <p className="text-neutral-400">Chargement des résultats...</p>
+        )}
       </div>
     </div>
   );

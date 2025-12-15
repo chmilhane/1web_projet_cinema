@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
@@ -7,58 +7,38 @@ export default function Navbar() {
 
   const navigate = useNavigate();
 
-  const onSearch = () => {
-    if (query.trim() === "") {
-      navigate("/");
-      return;
-    };
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (query.trim() === "") {
+        navigate("/");
+      } else {
+        navigate(`/search?q=${query}`);
+      }
+    }, 300);
 
-    navigate(`/search?q=${query}`);
-  }
+    return () => clearTimeout(timeout);
+  }, [query, navigate]);
 
   return (
     <div className="flex flex-col w-full items-center bg-primary shadow-md">
       <div className="h-18 flex items-center justify-between w-full px-4 lg:px-8 max-w-7xl">
         <div></div>
-        <div className="flex justify-center items-center">
-          <div
+        <div className="flex justify-center items-center w-full lg:w-auto">
+          <input
+            type="text"
+            placeholder="Rechercher..."
             className="
-              flex
-              ring-1 ring-white/15
+              w-full lg:w-80 px-4 py-2
+              bg-tertiary
               rounded-sm
-              focus-within:ring-1
-              focus-within:ring-blue-500
+              ring-1 ring-white/15
+              focus:outline-none
+              focus:ring-blue-500
               transition
             "
-          >
-            <input
-              type="text"
-              placeholder="Rechercher..."
-              className="
-                w-full lg:w-80 px-4 py-2
-                bg-tertiary
-                rounded-l-sm
-                focus:outline-none
-              "
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={(e) => { if (e.key === 'Enter') onSearch(); }}
-            />
-
-            <button
-              onClick={onSearch}
-              className="
-                bg-blue-600 hover:bg-blue-700
-                cursor-pointer
-                text-white
-                px-4 py-2
-                rounded-r-sm
-                focus:outline-none
-              "
-            >
-              <img src="/icons/search.png" alt="Search" className="h-4 w-4" />
-            </button>
-          </div>
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
         </div>
       </div>
 

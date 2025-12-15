@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getMovieById } from "../api/omdb";
 
 export default function Movie() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -36,6 +37,14 @@ export default function Movie() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col gap-8">
+      <button
+        onClick={() => navigate(-1)}
+        className="w-fit flex items-center gap-2 text-sm text-neutral-300 hover:text-white transition cursor-pointer"
+      >
+        <img src="/icons/arrow.png" alt="Back" className="h-3 w-3" />
+        <span>Retour</span>
+      </button>
+
       <div className="flex flex-col md:flex-row gap-8">
         <div className="shrink-0">
           {movie.Poster !== "N/A" ? (

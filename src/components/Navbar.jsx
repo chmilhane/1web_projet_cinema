@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <div className="flex flex-col w-full items-center bg-primary shadow-md">
-      <div className="h-18 flex items-center justify-between w-full px-8 max-w-7xl">
+      <div className="h-18 flex items-center justify-between w-full px-4 lg:px-8 max-w-7xl">
         <div></div>
         <div className="flex justify-center items-center">
           <div
@@ -35,7 +35,7 @@ export default function Navbar() {
               type="text"
               placeholder="Rechercher..."
               className="
-                w-80 px-4 py-2
+                w-full lg:w-80 px-4 py-2
                 bg-tertiary
                 rounded-l-sm
                 focus:outline-none
@@ -56,7 +56,7 @@ export default function Navbar() {
                 focus:outline-none
               "
             >
-              <img src="./icons/search.png" alt="Search" className="h-4 w-4" />
+              <img src="/icons/search.png" alt="Search" className="h-4 w-4" />
             </button>
           </div>
         </div>

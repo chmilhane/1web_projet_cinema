@@ -57,7 +57,7 @@ export default function Search() {
         <div className="h-px bg-linear-to-r from-purple-400 via-pink-500 to-transparent rounded-full"></div>
       </div>
 
-      <div className="mt-4 flex flex-wrap gap-6">
+      <div className="mt-4 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {movies.map(movie => (
           <MovieCard key={movie.imdbID} movie={movie} lessData />
         ))}

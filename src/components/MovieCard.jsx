@@ -2,20 +2,22 @@ import { Link } from "react-router-dom";
 
 export default function MovieCard({ movie, lessData }) {
   return (
-    <Link to={`/movie/${movie.imdbID}`}>
-      <article className="bg-tertiary w-50 rounded-sm ring-1 ring-white/15 overflow-hidden h-full">
-        <img
-          src={movie.Poster !== "N/A" ? movie.Poster : "/placeholder.png"}
-          alt={`Affiche du film ${movie.Title}`}
-          className="h-80 w-50 object-cover bg-black/20"
-          onError={(e) => {
-            e.currentTarget.src = "/placeholder.png";
-            e.currentTarget.onerror = null;
-          }}
-        />
+    <Link to={`/movie/${movie.imdbID}`} className="h-full">
+      <article className="bg-tertiary rounded-sm ring-1 ring-white/15 overflow-hidden h-full flex flex-col">
+        <div className="w-full aspect-2/3 bg-black/20">
+          <img
+            src={movie.Poster !== "N/A" ? movie.Poster : "/placeholder.png"}
+            alt={`Affiche du film ${movie.Title}`}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.currentTarget.src = "/placeholder.png";
+              e.currentTarget.onerror = null;
+            }}
+          />
+        </div>
 
-        <div className="p-4 flex flex-col gap-1">
-          { !lessData &&
+        <div className="p-4 flex flex-col gap-1 flex-1">
+          {!lessData && (
             <div className="flex items-center gap-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -32,12 +34,19 @@ export default function MovieCard({ movie, lessData }) {
                 />
               </svg>
               <span className="text-xs text-neutral-300">{movie.imdbRating}/10</span>
-            </div>  
-          }
-          <h2 className="text-lg font-semibold">{movie.Title} <span className="text-xs text-neutral-400 font-normal">({movie.Year})</span></h2>
-          { !lessData &&
+            </div>
+          )}
+
+          <h2 className="text-lg font-semibold leading-tight">
+            {movie.Title}{" "}
+            <span className="text-xs text-neutral-400 font-normal">
+              ({movie.Year})
+            </span>
+          </h2>
+
+          {!lessData && (
             <p className="text-xs text-neutral-400">{movie.Director}</p>
-          }
+          )}
         </div>
       </article>
     </Link>

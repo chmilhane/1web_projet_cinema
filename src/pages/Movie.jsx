@@ -47,17 +47,15 @@ export default function Movie() {
 
       <div className="flex flex-col md:flex-row gap-8">
         <div className="shrink-0">
-          {movie.Poster !== "N/A" ? (
-            <img
-              src={movie.Poster}
-              alt={movie.Title}
-              className="w-72 rounded-sm ring-1 ring-white/15"
-            />
-          ) : (
-            <div className="w-72 h-105 bg-black/30 flex items-center justify-center">
-              <span className="text-neutral-500">Affiche non disponible</span>
-            </div>
-          )}
+          <img
+            src={movie.Poster}
+            alt={movie.Title}
+            className="w-72 rounded-sm ring-1 ring-white/15"
+            onError={(e) => {
+              e.currentTarget.src = "/placeholder.png";
+              e.currentTarget.onerror = null;
+            }}
+          />
         </div>
 
         <div className="flex flex-col">

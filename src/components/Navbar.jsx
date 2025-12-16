@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Navbar() {
-  const queryUrl = new URLSearchParams(window.location.search).get("q") || "";
+  const location = useLocation();
+  const queryUrl = new URLSearchParams(location.search).get("q") || "";
+
   const [query, setQuery] = useState(queryUrl);
+  const [isFocused, setIsFocused] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!isFocused) return;
+
     const timeout = setTimeout(() => {
       if (query.trim() === "") {
         navigate("/");
@@ -17,12 +22,13 @@ export default function Navbar() {
     }, 300);
 
     return () => clearTimeout(timeout);
-  }, [query, navigate]);
+  }, [query, isFocused, navigate]);
 
   return (
     <div className="flex flex-col w-full items-center bg-primary shadow-md">
       <div className="h-18 flex items-center justify-between w-full px-4 lg:px-8 max-w-7xl">
         <div></div>
+
         <div className="flex justify-center items-center w-full lg:w-auto">
           <input
             type="text"
@@ -38,6 +44,8 @@ export default function Navbar() {
             "
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
           />
         </div>
       </div>

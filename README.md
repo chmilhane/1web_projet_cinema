@@ -1,16 +1,42 @@
-# React + Vite
+# Projet Cinéma 🎬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+Un cinéma d'un petit village isolé souhaite proposer des films à l'affiche pour attirer plus de jeunes des villages alentours.
 
-Currently, two official plugins are available:
+Pour atteindre cet objectif, les gérants du cinéma décident de vous missionner pour créer une application permettant aux clients de visualiser les films disponibles.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Fonctionnalités
+- 📽️ Films en tendances
+- 🔍 Recherche des films en temps réel
 
-## React Compiler
+## Installation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prérequis
+- Node.js (v14+)
+- npm ou yarn
 
-## Expanding the ESLint configuration
+### Étapes de démarrage
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Cloner le repository**
+```bash
+git clone https://github.com/chmilhane/1web_projet_cinema.git
+cd 1web_projet_cinema
+```
+
+2. **Installer les dépendances**
+```bash
+npm install
+```
+
+3. **Configurer les variables d'environnement**
+```bash
+cp .env.example .env
+```
+
+4. **Démarrer l'application**
+```bash
+npm start
+```
+
+5. **Accéder à l'application**
+Ouvrir `http://localhost:3000` dans votre navigateur

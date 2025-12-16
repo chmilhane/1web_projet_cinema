@@ -35,7 +35,7 @@ cp .env.example .env
 
 4. **Démarrer l'application**
 ```bash
-npm start
+npm run dev
 ```
 
 5. **Accéder à l'application**
